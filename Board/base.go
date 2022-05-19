@@ -50,8 +50,8 @@ func isItBlack(r uint32, g uint32, b uint32, a uint32) bool {
 	}
 }
 
-func (b board) SavePng() {
-	f, _ := os.Create("board.png")
+func (b board) SavePng(name string) {
+	f, _ := os.Create(name)
 
 	err := png.Encode(f, b.Img)
 	if err != nil {

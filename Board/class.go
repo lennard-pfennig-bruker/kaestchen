@@ -38,20 +38,14 @@ func New(width int, height int) *board {
 }
 
 func (b board) SpawnRect() {
-	minSize := 40
+	minSize := 10
 	maxSize := 80
-	step := 25
+	step := 30
 
 	// stupid algo for sppawnfinder
-	x, y := 0, 0
-	for {
-		x, y = rand.Intn((b.Width-minSize)/step)*step, rand.Intn((b.Height-minSize)/step)*step
-		if !b.pixelDone[x][y] {
-			break
-		}
-	}
+	x, y := rand.Intn((b.Width)/step)*step, rand.Intn((b.Height)/step)*step
 
-	step = 5
+	step = 10
 
 	xSize := rand.Intn((maxSize-minSize)/step)*step + minSize
 	ySize := rand.Intn((maxSize-minSize)/step)*step + minSize
