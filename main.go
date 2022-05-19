@@ -23,7 +23,7 @@ func main() {
 		}
 	}
 	fmt.Println("running random rect spawning...")
-	counter := 50
+	counter := 100
 	for {
 		b.SpawnRect()
 		counter -= 1

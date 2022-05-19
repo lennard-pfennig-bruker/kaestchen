@@ -28,6 +28,12 @@ func (b board) Rect(x1, y1, x2, y2 int) {
 	b.HLine(x1, y2, x2)
 	b.VLine(x1, y1, y2)
 	b.VLine(x2, y1, y2)
+
+	for x := x1 + 1; x < x2; x++ {
+		for y := y1 + 1; y < y2; y++ {
+			b.BlackIt(x, y, 0)
+		}
+	}
 }
 
 func isItBlack(r uint32, g uint32, b uint32, a uint32) bool {
