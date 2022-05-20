@@ -1,10 +1,9 @@
 package main
 
 import (
-	"bensPlatte/Board"
+	"Platte/Board"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"math/rand"
 	"net/http"
 	"time"
@@ -39,7 +38,7 @@ func build() {
 	b.SavePng("board.png")
 }
 
-func handleRequest(w http.ResponseWriter, r *http.Request) {
+func imgHandler(w http.ResponseWriter, r *http.Request) {
 	build()
 	fileBytes, err := ioutil.ReadFile("board.png")
 	if err != nil {
@@ -52,10 +51,4 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	return
-}
-
-func main() {
-	http.HandleFunc("/", handleRequest)
-	fmt.Println("Serve on http://localhost:8080 ...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
 }
