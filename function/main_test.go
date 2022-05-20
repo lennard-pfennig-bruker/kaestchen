@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func TestMain(t *testing.T) {
+func TestAll(t *testing.T) {
 	d := time.Now().Add(50 * time.Millisecond)
 	os.Setenv("AWS_LAMBDA_FUNCTION_NAME", "blank-go")
 	ctx, _ := context.WithDeadline(context.Background(), d)
@@ -36,6 +36,7 @@ func TestMain(t *testing.T) {
 		t.Errorf("Output does not contain FunctionCode.")
 	}
 }
+
 func ReadJSONFromFile(t *testing.T, inputFile string) []byte {
 	inputJSON, err := ioutil.ReadFile(inputFile)
 	if err != nil {
