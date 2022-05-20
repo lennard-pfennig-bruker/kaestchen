@@ -5,21 +5,23 @@ import (
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"net/http"
 )
 
 func Funcy(r events.LambdaFunctionURLRequest) (events.LambdaFunctionURLResponse, error) {
 	fmt.Println(r.Body)
+
+	// responseBody, _ := json.Marshal("is all good")
+	responseBody := "is it"
+	// respHeader := map[string]string{"Content-Type": "application/json"}
 	response := events.LambdaFunctionURLResponse{
-		StatusCode:      0,
-		Headers:         nil,
-		Body:            "is it?",
-		IsBase64Encoded: false,
-		Cookies:         nil,
+		StatusCode: http.StatusOK,
+		// Headers:    respHeader,
+		Body: string(responseBody),
 	}
 	return response, nil
 }
 
 func main() {
-	// Make the handler available for Remote Procedure Call by AWS Lambda
 	lambda.Start(Funcy)
 }
