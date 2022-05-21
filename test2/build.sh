@@ -16,4 +16,6 @@ aws lambda update-function-code \
 --function-name golangTest1 \
 --region eu-central-1 \
 --s3-bucket go-test-lenne \
---s3-key main.zip
+--s3-key main.zip > lambda-update.log
+
+curl -i https://op4wxb4za7vvbubufgdppxlksm0ojudm.lambda-url.eu-central-1.on.aws/
